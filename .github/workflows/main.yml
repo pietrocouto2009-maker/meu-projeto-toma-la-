@@ -1,26 +1,19 @@
-name: Testar e Gerar Artefato
+name: Minha Primeira Linha de Montagem
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  construir-e-testar:
+  build-e-teste:
     runs-on: ubuntu-latest
+
     steps:
-    - name: 1. Checkout do código
-      uses: actions/checkout@v4
+      - name: 1. Pegar o chassi do carro (código-fonte)
+        uses: actions/checkout@v4
 
-    - name: 2. Executar e testar (Validação do arquivo)
-      run: |
-        echo "Iniciando testes..."
-        if [ -f dados.txt ]; then
-            echo "Sucesso: dados.txt encontrado na raiz!"
-        else
-            echo "Erro: dados.txt não encontrado."
-            exit 1
-        fi
+      - name: 2. Estação de Build (Montagem)
+        run: echo "Construindo o projeto... Verificando se todas as peças se encaixam!"
 
-    - name: 3. Disponibilizar artefato
-      uses: actions/upload-artifact@v4
-      with:
-        name: artefato-texto
-        path: dados.txt
+      - name: 3. Estação de Teste (Controle de Qualidade)
+        run: echo "Rodando os testes automatizados... Verificando se a porta abre e fecha!"
